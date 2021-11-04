@@ -131,6 +131,10 @@ if browser.current_url != None and "login_otp" in browser.current_url:
 
     browser.find_element_by_xpath("/html/body/div/div/div/form/div[1]/input").send_keys(mfa_code)
     browser.find_element_by_xpath("/html/body/div/div/div/form/div[2]/button").click()
+elif "login" in browser.current_url:
+    print("Login failed")
+    browser.close()
+    exit(1)
 else:
     print(browser.current_url)
     print("MFA is not enabled, continuing")
@@ -152,7 +156,9 @@ notif = notifications.find_element_by_xpath(".//div[2]").text
 print(f"Got notification: {notif}")
 if "Minimum" in notif:
     print("Failed to reinvest, insufficient available balance")
+elif "successfully" in notif:
+    print(f"Successfully reinvested {args.token} balance of {bal}")
 else:
-    print("Unknown notif")
+    print("Unknown notification")
 
-#browser.close()
+browser.close()
