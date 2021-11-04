@@ -9,6 +9,7 @@ Requirements:
 * `firefox`
 * `pip3 install -r requirements.txt`
 * Install: `https://github.com/mozilla/geckodriver/releases`
+* 2captcha API key: https://2captcha.com
 
 Run:
 * `python3 reinvest.py -u <username> -t <token>`
